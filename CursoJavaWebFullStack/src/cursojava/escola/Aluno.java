@@ -1,5 +1,7 @@
 package cursojava.escola;
 
+import java.util.Objects;
+
 public class Aluno {
 	private int idade;
 	private String nome;
@@ -102,5 +104,51 @@ public class Aluno {
 	public double getMedia() {
 		return (nota1 + nota2 + nota3 + nota4) / 4;
 	}
+	
+	public boolean getAlunoAprovado() {
+		double media = this.getMedia();
+		
+		if(media >= 70) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	public String getAlunoAprovado2() {
+		double media = this.getMedia();
+		
+		if(media >= 70) {
+			return "Aluno Aprovado";
+		} else {
+			return "Aluno Reprovado";
+		}
+	}
+	@Override
+	public String toString() {
+		return "Aluno [idade=" + idade + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", registroGeral="
+				+ registroGeral + ", numeroCpf=" + numeroCpf + ", \n       nomeMae=" + nomeMae + ", nomePai=" + nomePai
+				+ ", \n       dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatriculado="
+				+ serieMatriculado + ", \n       nota1=" + nota1 + ", nota2=" + nota2 + ", nota3=" + nota3 + ", nota4=" + nota4
+				+ "]\n";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(nome, numeroCpf);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluno other = (Aluno) obj;
+		return Objects.equals(nome, other.nome) && Objects.equals(numeroCpf, other.numeroCpf);
+	}
+	
+	
 
 }

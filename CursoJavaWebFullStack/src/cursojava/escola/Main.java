@@ -1,31 +1,54 @@
 package cursojava.escola;
 
+import javax.swing.JOptionPane;
+
 public class Main {
 	public static void main(String[] args) {
 	
 		Aluno aluno1 = new Aluno();
 		Aluno aluno2 = new Aluno();
 		
-		aluno1.setNome("João");
-		aluno1.setIdade(50);
-		aluno1.setNomeMae("Maria");
-		aluno1.setNomePai("Jose");
-		aluno1.setNumeroCpf("987.765.654-76");
-		aluno1.setRegistroGeral("23.654.765-0");
-		aluno1.setDataNascimento("15/06/1968");
-		aluno1.setNomeEscola("JDEV treinamento");
-		aluno1.setDataMatricula("30/02/2021");
-		aluno1.setSerieMatriculado("Java Web");
-		aluno1.setNota1(90);
-		aluno1.setNota2(89.2);
-		aluno1.setNota3(82.8);
-		aluno1.setNota4(76.5);
+		String nome = JOptionPane.showInputDialog("Digite seu nome: ");
+		String idade = JOptionPane.showInputDialog("Digite sua idade: ");
+		String mae = JOptionPane.showInputDialog("Digite o nome da mãe: ");
+		String pai = JOptionPane.showInputDialog("Digite o nome do pai: ");
+		String cpf = JOptionPane.showInputDialog("Digite o n° do CPF: ");
+		String rg = JOptionPane.showInputDialog("Digite o n° do RG: ");
+		String dataNasc = JOptionPane.showInputDialog("Digite a data de nascimento: ");
+		String escola = JOptionPane.showInputDialog("Digite o nome da escola: ");
+		String dataMatr = JOptionPane.showInputDialog("Digite a data de matricula: ");
+		String serie = JOptionPane.showInputDialog("Digite a série matriculada: ");
+		String nota1 = JOptionPane.showInputDialog("Digite a nota 1: ");
+		String nota2 = JOptionPane.showInputDialog("Digite a nota 2: ");
+		String nota3 = JOptionPane.showInputDialog("Digite a nota 3: ");
+		String nota4 = JOptionPane.showInputDialog("Digite a nota 4: ");
+		
+		aluno1.setNome(nome);
+		aluno1.setIdade(Integer.valueOf(idade));
+		aluno1.setNomeMae(mae);
+		aluno1.setNomePai(pai);
+		aluno1.setNumeroCpf(cpf);
+		aluno1.setRegistroGeral(rg);
+		aluno1.setDataNascimento(dataNasc);
+		aluno1.setNomeEscola(escola);
+		aluno1.setDataMatricula(dataMatr);
+		aluno1.setSerieMatriculado(serie);
+		aluno1.setNota1(Double.parseDouble(nota1));
+		aluno1.setNota2(Double.parseDouble(nota2));
+		aluno1.setNota3(Double.parseDouble(nota3));
+		aluno1.setNota4(Double.parseDouble(nota4));
+		
 		
 		System.out.println("Nome: "+ aluno1.getNome());
 		System.out.println("Idade: "+ aluno1.getIdade());
 		System.out.println("Data da Matricula: "+ aluno1.getDataMatricula());
 		System.out.println("Media: " + aluno1.getMedia());
+		System.out.println("Resultado: " + (aluno1.getAlunoAprovado() ? "Aprovado": "Reprovado"));
 		
+		System.out.println("\n======== toString ========\n");
+		System.out.println(aluno1.toString());
+		System.out.println("Media do aluno: " + aluno1.getMedia());
+		System.out.println("Resultado: " + aluno1.getAlunoAprovado2());
 		System.out.println("==============================================");
 		
 		aluno2.setNome("Maria");
@@ -42,6 +65,21 @@ public class Main {
 		System.out.println("Nome: "+ aluno2.getNome());
 		System.out.println("Idade: "+ aluno2.getIdade());
 		System.out.println("Data da Matricula: "+ aluno2.getDataMatricula());
+		
+		// equals and hasCode servem para comparar e diferenciar objetos
+		Aluno aluno3 = new Aluno();
+		aluno3.setNome("Alisson");
+		aluno3.setNumeroCpf("554");
+		
+		Aluno aluno4 = new Aluno();
+		aluno4.setNome("Aluno");
+		aluno4.setNumeroCpf("554");
+		
+		if(aluno3.equals(aluno4)) {
+			System.out.println("Os alunos são iguais");
+		} else {
+			System.out.println("Os alunos são diferentes");
+		}
 		
 	}
 }
